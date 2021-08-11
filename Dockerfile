@@ -1,4 +1,4 @@
-FROM localhost:5000/openjdk as build
+FROM adoptopenjdk/openjdk11
 
 RUN groupadd -r spring && useradd --no-log-init -m -r -g spring spring
 
@@ -23,7 +23,7 @@ COPY --chown=spring src src
 
 RUN ./mvnw install -DskipTests --quiet
 
-FROM localhost:5000/openjdk
+FROM adoptopenjdk/openjdk11
 
 RUN groupadd -r spring && useradd --no-log-init -m -r -g spring spring
 
